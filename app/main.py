@@ -1,8 +1,11 @@
-import discord
-from discord import app_commands
+import os
 import dotenv
 from server import server_thread
+import discord
+from discord import app_commands
 import random
+
+dotenv.load_dotenv()
 
 TOKEN = os.environ.get("TOKEN")
 intents = discord.Intents.all()
