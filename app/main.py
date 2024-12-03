@@ -24,9 +24,9 @@ async def on_ready():
     await tree.sync()
 
 # スラッシュコマンドを設定
-@tree.command(name='hello', description='Say hello to the world!') 
+@tree.command(name='test', description='Say hello to the world!') 
 async def test(interaction: discord.Interaction): 
-  await interaction.response.send_message('Hello, World!')
+    await interaction.response.send_message('Hello, World!')
 
 # トークンを指定してbot実行
 server_thread()
