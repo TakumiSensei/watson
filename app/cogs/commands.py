@@ -19,7 +19,7 @@ class BasicCog(commands.Cog):
     @app_commands.describe(list="カンマ区切りで項目を入力して下さい。")
     async def dice(self, interaction:discord.Interaction, list:str):
         dicelist = list.split(',')
-        await interaction.response.send_message(f"ダイス結果は, {str(random.choice(dicelist))}")
+        await interaction.response.send_message(f"「{list}」の中から抽選します。\n選ばれたのは、** 「{str(random.choice(dicelist))}」**です！")
 
 async def setup(bot):
     await bot.add_cog(BasicCog(bot))
