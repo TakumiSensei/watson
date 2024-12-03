@@ -3,7 +3,7 @@ import dotenv
 from server import server_thread
 import discord
 from discord import app_commands
-import random
+import commands
 
 dotenv.load_dotenv()
 
