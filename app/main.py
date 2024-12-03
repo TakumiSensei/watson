@@ -11,7 +11,8 @@ INITIAL_EXTENSIONS = [
 ]
 TOKEN = os.environ.get("TOKEN")
 intents = discord.Intents.all()
-bot = commands.Bot(command_prefix='h!', intents=intents)
+bot = commands.Bot(command_prefix='/', intents=intents)
+# bot = discord.Client(intents=intents)
 # tree = app_commands.CommandTree(bot)
 
 # botのログインと同期
@@ -22,6 +23,9 @@ async def on_ready():
     # アクティビティを設定
     game = discord.Game("helpコマンドでbotの使い方をお伝えします。")
     await bot.change_presence(status=discord.Status.idle, activity=game)
+    
+    for cog in INITIAL_EXTENSIONS:
+        await bot.load_extension(cog)
 
     # スラッシュコマンドを同期
     await bot.tree.sync()
@@ -30,11 +34,6 @@ async def on_ready():
 # async def test(interaction: discord.Interaction): 
 #   await interaction.response.send_message('Hello, World!')
 
-async def load_extension():
-    for cog in INITIAL_EXTENSIONS:
-        await bot.load_extension(cog)
-
 # トークンを指定してbot実行
-load_extension()
 server_thread()
 bot.run(TOKEN)
