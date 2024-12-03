@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from discord import app_commands
+import random
 
 class BasicCog(commands.Cog):
     def __init__(self, bot):
@@ -14,10 +15,11 @@ class BasicCog(commands.Cog):
     async def hello(self, interaction:discord.Interaction):
         await interaction.response.send_message('Hello, World!')
 
-    @app_commands.command(name="dice", description="ダイスを振ります")
-    async def dice(self, interaction:discord.Interaction, *args):
-        arguments = ', '.join(args)
-        await interaction.response.send_message(f"ダイス結果は, {arguments}")
+    @app_commands.command(name="dice", description="ダイスを振ります。")
+    @app_commands.describe(list="カンマ区切りで項目を入力して下さい。")
+    async def dice(self, interaction:discord.Interaction, list:str):
+        dicelist = list.split(',')
+        await interaction.response.send_message(f"ダイス結果は, {str(random.choice(dicelist))}")
 
 async def setup(bot):
     await bot.add_cog(BasicCog(bot))
