@@ -21,8 +21,8 @@ async def on_ready():
     print('ログインしました')
 
     # アクティビティを設定
-    game = discord.Game("helpコマンドでbotの使い方をお伝えします。")
-    await bot.change_presence(status=discord.Status.idle, activity=game)
+    activity = discord.CustomActivity(name="現在、/helloと/diceのコマンドが使用可能です。")
+    await bot.change_presence(status=discord.Status.online, activity=activity)
     
     for cog in INITIAL_EXTENSIONS:
         await bot.load_extension(cog)
