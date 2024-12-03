@@ -7,7 +7,7 @@ from discord.ext import commands
 dotenv.load_dotenv()
 
 INITIAL_EXTENSIONS = [
-    'cogs.commands'
+    'app.cogs.commands'
 ]
 TOKEN = os.environ.get("TOKEN")
 intents = discord.Intents.all()
