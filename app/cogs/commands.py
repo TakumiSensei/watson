@@ -15,8 +15,9 @@ class BasicCog(commands.Cog):
         await interaction.response.send_message('Hello, World!')
 
     @app_commands.command(name="dice", description="ダイスを振ります")
-    async def dice(self, interaction:discord.Interaction, text:str):
-        await interaction.response.send_message(f"ダイス結果は, {text}")
+    async def dice(self, interaction:discord.Interaction, *args):
+        arguments = ', '.join(args)
+        await interaction.response.send_message(f"ダイス結果は, {arguments}")
 
 async def setup(bot):
     await bot.add_cog(BasicCog(bot))
