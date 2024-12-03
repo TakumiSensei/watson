@@ -3,11 +3,12 @@ import dotenv
 from server import server_thread
 import discord
 from discord.ext import commands
+import cogs
 
 dotenv.load_dotenv()
 
 INITIAL_EXTENSIONS = [
-    '.cogs.commands',
+    'cogs.commands',
 ]
 TOKEN = os.environ.get("TOKEN")
 
