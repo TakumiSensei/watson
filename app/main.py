@@ -4,10 +4,13 @@ from server import server_thread
 import discord
 from discord import app_commands
 from discord.ext import commands
-from commands import HelloCog
+from app.cogs.commands import HelloCog
 
 dotenv.load_dotenv()
 
+INITIAL_EXTENSIONS = [
+    'cogs.commands'
+]
 TOKEN = os.environ.get("TOKEN")
 intents = discord.Intents.all()
 bot = commands.Bot(command_prefix='h!', intents=intents)
@@ -29,7 +32,11 @@ async def on_ready():
 # async def test(interaction: discord.Interaction): 
 #   await interaction.response.send_message('Hello, World!')
 
+async def load_extension():
+    for cog in INITIAL_EXTENSIONS:
+        await bot.load_extension(cog)
+
 # トークンを指定してbot実行
+load_extension()
 server_thread()
-bot.add_cog(HelloCog(bot))
 bot.run(TOKEN)
