@@ -2,9 +2,7 @@ import os
 import dotenv
 from server import server_thread
 import discord
-from discord import app_commands
 from discord.ext import commands
-from app.cogs.commands import HelloCog
 
 dotenv.load_dotenv()
 
